@@ -23,7 +23,7 @@ path = reverend('/user/:id', { id: 5 });
 // '/user/5';
 
 path = reverend('/user/:id/:operation?', { id: 5 });
-// '/user/5';
+// '/user/5/';
 
 path = reverend('/user/:id/:operation', { id: 5, operation: address });
 // '/user/5/address';
