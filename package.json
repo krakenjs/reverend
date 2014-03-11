@@ -1,6 +1,6 @@
 {
   "name": "reverend",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Merge an express-style path string with data to create a valid path.",
   "main": "index.js",
   "directories": {
