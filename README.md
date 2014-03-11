@@ -2,6 +2,8 @@
 
 Merge an express-style path string with data to create a valid path.
 
+[![Build Status](https://travis-ci.org/totherik/reverend.png)](https://travis-ci.org/totherik/reverend)
+
 ## Usage
 ```javascript
 var reverend = require('reverend');
