@@ -28,6 +28,7 @@ module.exports = function reverend(route, obj) {
             value = '';
         }
 
+        value = encodeURIComponent(value);
         route = route.replace(new RegExp(regex, 'g'), value);
     });
 
