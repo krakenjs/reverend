@@ -1,0 +1,31 @@
+{
+  "name": "reverend",
+  "version": "0.0.0",
+  "description": "Merge an express-style path string with data to create a valid path.",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "tape test/*.js",
+    "cover": "istanbul cover tape -- test/*.js",
+    "lint": "jshint -c .jshintrc index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/totherik/reverend.git"
+  },
+  "keywords": [
+    "express",
+    "path",
+    "merge",
+    "reverse"
+  ],
+  "author": "Erik Toth <totherik@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "tape": "~2.10.2",
+    "istanbul": "~0.2.6",
+    "jshint": "~2.4.4"
+  }
+}
