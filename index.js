@@ -33,4 +33,4 @@ module.exports = function reverend(route, obj) {
     });
 
     return route;
-}
+};
