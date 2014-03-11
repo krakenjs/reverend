@@ -39,6 +39,6 @@ $ npm test
 ```javascript
 $ npm run cover
 ```
-```javsacript
+```javascript
 $ npm run lint
 ```
