@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/totherik/reverend.git"
+    "url": "https://github.com/krakenjs/reverend.git"
   },
   "keywords": [
     "express",
@@ -22,7 +22,12 @@
     "reverse"
   ],
   "author": "Erik Toth <totherik@gmail.com>",
-  "license": "MIT",
+  "licenses": [
+    {
+      "type": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  ],
   "devDependencies": {
     "tape": "^2.10.2",
     "istanbul": "^0.2.6",
