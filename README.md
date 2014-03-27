@@ -2,7 +2,7 @@
 
 Merge an express-style path string with data to create a valid path.
 
-[![Build Status](https://travis-ci.org/totherik/reverend.png)](https://travis-ci.org/totherik/reverend)
+[![Build Status](https://travis-ci.org/krakenjs/reverend.png)](https://travis-ci.org/krakenjs/reverend)
 
 ## Usage
 ```javascript
