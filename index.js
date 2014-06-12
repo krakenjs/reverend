@@ -13,13 +13,14 @@
  │  See the License for the specific language governing permissions and       │
  │  limitations under the License.                                            │
  \*───────────────────────────────────────────────────────────────────────────*/
+ // RegExp patterns used from: https://github.com/component/path-to-regexp (MIT)
 'use strict';
 
 var path2regex = require('path-to-regexp');
 
 
 module.exports = function reverend(route, obj) {
-    var keys;
+    var keys, path, routeRegex;
 
     // Support `route` being an array (which path-to-regexp supports), and
     // prefer the first item because we want the best-fit URL.
@@ -34,30 +35,50 @@ module.exports = function reverend(route, obj) {
     }
 
     keys = [];
-    path2regex(route, keys);
+    path = route;
+    routeRegex = path2regex(route, keys);
 
     keys.forEach(function (key) {
         var value, regex;
 
         value = obj[key.name];
-        regex = '\\:' + key.name;
 
-        if (key.optional) {
-            // Include the trailing '?' in the replacement.
-            regex += '\\?';
-            if (value === undefined) {
-                // No value so remove potential trailing '/'
-                // since the path segment is optional.
-                value = '';
-                regex += '\\/?';
-            }
-        } else if (value === undefined) {
+        // Enforce that required keys have truthy values.
+        if (!key.optional && !value) {
+            throw new RangeError('A value must be provided for: ' + key.name);
+        }
+
+        // Pattern used in both unnamed (e.g., "/posts/(.*)") and custom match
+        // parameters (e.g., "/posts/:id(\\d+)").
+        regex = '\\(((?:\\\\.|[^)])*)\\)';
+
+        // A key's `name` will be a String for named parameters, and a Number
+        // for unnamed parameters. This prefixes the base regexp pattern with
+        // the name, and makes the custom-matching part optional (which follows
+        // what path-to-regexp does.)
+        if (typeof key.name === 'string') {
+            regex = '\\:' + key.name + '(?:' + regex + ')?';
+        }
+
+        // Append suffix pattern.
+        regex += '([+*?])?';
+
+        if (key.optional && !value) {
+            // No value so remove potential trailing '/'
+            // since the path segment is optional.
             value = '';
+            regex += '\\/?';
         }
 
         value = encodeURIComponent(value);
-        route = route.replace(new RegExp(regex, 'g'), value);
+        path = path.replace(new RegExp(regex), value);
     });
 
-    return route;
+
+    // Make sure the `path` produced will actually be matched by the `route`.
+    if (!routeRegex.test(path)) {
+        throw new RangeError('"' + path + '" will not match: "' + route + '"');
+    }
+
+    return path;
 };
