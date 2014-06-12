@@ -21,6 +21,18 @@ var path2regex = require('path-to-regexp');
 module.exports = function reverend(route, obj) {
     var keys;
 
+    // Support `route` being an array (which path-to-regexp supports), and
+    // prefer the first item because we want the best-fit URL.
+    if (Array.isArray(route)) {
+        route = route[0];
+    }
+
+    // Restrict `route` to Strings since a RegExp route can't be used to
+    // generate a path (path-to-regexp supports RegExp route paths).
+    if (typeof route !== 'string') {
+        throw new TypeError('route must be a String path');
+    }
+
     keys = [];
     path2regex(route, keys);
 

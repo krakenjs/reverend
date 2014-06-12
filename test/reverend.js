@@ -117,3 +117,47 @@ test('optional replacement', function (t) {
 
     t.end();
 });
+
+test('path type validation', function (t) {
+    t.doesNotThrow(function () {
+        reverend('/some/string', {});
+    });
+
+    t.doesNotThrow(function () {
+        reverend(['/some/string'], {});
+    });
+
+    t.throws(function () {
+        reverend(undefined, {});
+    });
+
+    t.throws(function () {
+        reverend(null, {});
+    });
+
+    t.throws(function () {
+        reverend(true, {});
+    });
+
+    t.throws(function () {
+        reverend(10, {});
+    });
+
+    t.throws(function () {
+        reverend({}, {});
+    });
+
+    t.throws(function () {
+        reverend(/re/, {});
+    });
+
+    t.throws(function () {
+        reverend(function () {}, {});
+    });
+
+    t.throws(function () {
+        reverend([/re/], {});
+    });
+
+    t.end();
+});
