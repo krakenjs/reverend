@@ -128,8 +128,16 @@ test('custom match params', function (t) {
     };
 
     path = '/posts/:id(\\d+)';
+
     actual = reverend(path, data);
     t.equal(actual, '/posts/123');
+
+    data = {
+        id: 0
+    };
+
+    actual = reverend(path, data);
+    t.equal(actual, '/posts/0');
 
     path = '/posts/id:([^\\d]+)';
     t.throws(function () {

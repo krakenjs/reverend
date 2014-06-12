@@ -43,8 +43,8 @@ module.exports = function reverend(route, obj) {
 
         value = obj[key.name];
 
-        // Enforce that required keys have truthy values.
-        if (!key.optional && !value) {
+        // Enforce required keys having a value.
+        if (!key.optional && value === undefined) {
             throw new RangeError('A value must be provided for: ' + key.name);
         }
 
@@ -63,7 +63,7 @@ module.exports = function reverend(route, obj) {
         // Append suffix pattern.
         regex += '([+*?])?';
 
-        if (key.optional && !value) {
+        if (key.optional && value === undefined) {
             // No value so remove potential trailing '/'
             // since the path segment is optional.
             value = '';
