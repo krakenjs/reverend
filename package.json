@@ -34,6 +34,6 @@
     "jshint": "^2.4.4"
   },
   "dependencies": {
-    "path-to-regexp": "^0.1.2"
+    "path-to-regexp": "^0.2.1"
   }
 }
