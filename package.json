@@ -22,6 +22,9 @@
     "reverse"
   ],
   "author": "Erik Toth <totherik@gmail.com>",
+  "contributors": [
+      "Eric Ferraiuolo <eferraiuolo@gmail.com>"
+  ],
   "licenses": [
     {
       "type": "Apache 2.0",
