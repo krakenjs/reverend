@@ -139,7 +139,7 @@ test('custom match params', function (t) {
     actual = reverend(path, data);
     t.equal(actual, '/posts/0');
 
-    path = '/posts/id:([^\\d]+)';
+    path = '/posts/:id([^\\d]+)';
     t.throws(function () {
         reverend(path, data);
     });
