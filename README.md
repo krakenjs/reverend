@@ -43,7 +43,7 @@ path = reverend('/user/:id/:operation', { id: 5, operation: address });
 path = reverend('/posts/:id(\\d+)', { id: 5 });
 // '/post/5'
 
-path = reverend('/posts/:id(\\d+)', { id: 'foo }); // throws
+path = reverend('/posts/:id(\\d+)', { id: 'foo' }); // throws
 
 // Unnamed params
 path = reverend('/:foo/(.*)', { foo: 'foo', 0: 'bar' });
