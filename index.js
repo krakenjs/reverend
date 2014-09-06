@@ -18,6 +18,7 @@
 
 var path2regex = require('path-to-regexp');
 
+var cache = Object.create(null);
 
 module.exports = function reverend(route, obj) {
     var keys, path, routeRegex;
@@ -34,9 +35,19 @@ module.exports = function reverend(route, obj) {
         throw new TypeError('route must be a String path');
     }
 
-    keys = [];
+    if (route in cache) {
+        keys = cache[route].keys;
+        routeRegex = cache[route].routeRegex;
+    } else {
+        keys = [];
+        routeRegex = path2regex(route, keys);
+        cache[route] = {
+            keys: keys,
+            routeRegex: routeRegex
+        };
+    }
+
     path = route;
-    routeRegex = path2regex(route, keys);
 
     keys.forEach(function (key) {
         var value, regex;
