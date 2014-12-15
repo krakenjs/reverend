@@ -1,4 +1,9 @@
-# reverend
+reverend
+========
+
+Lead Maintainer: [Jean-Charles Sisk](https://github.com/jasisk)  
+
+[![Build Status](https://travis-ci.org/krakenjs/reverend.svg?branch=master)](https://travis-ci.org/krakenjs/reverend)  
 
 Merge an express-style path string with data to create a valid path. Version 0.3.x adds support for
 [Custom Match](https://github.com/component/path-to-regexp#custom-match-parameters) and
@@ -6,9 +11,6 @@ Merge an express-style path string with data to create a valid path. Version 0.3
 To ensure compatibility, use the version of reverend compatible with path-to-regexp which most closely matches the
 version your application uses.
 
-
-
-[![Build Status](https://travis-ci.org/krakenjs/reverend.png)](https://travis-ci.org/krakenjs/reverend)
 
 ## Usage
 ```javascript
