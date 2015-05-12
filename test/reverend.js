@@ -95,7 +95,7 @@ test('optional replacement', function (t) {
 
     path = '/:foo?/:bar?';
     actual = reverend(path, data);
-    t.equal(actual, '/foo/');
+    t.equal(actual, '/foo');
 
     path = '/:foo?/:bar?/';
     actual = reverend(path, data);
@@ -103,7 +103,7 @@ test('optional replacement', function (t) {
 
     path = '/:bar?';
     actual = reverend(path, data);
-    t.equal(actual, '/');
+    t.equal(actual, '');
 
     path = '/:bar?/';
     actual = reverend(path, data);
