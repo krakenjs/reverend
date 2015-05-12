@@ -1,5 +1,7 @@
 **DEPRECATED**: `Reverend` has been deprecated and will no longer see updates. The underlying module used to create regular expressions from routes—[path-to-regexp](https://github.com/pillarjs/path-to-regexp)—has added reverse-routing functionality. Please favor it over `Reverend`. An api-compatible shim can be seen in the [shim](../shim/index.js) branch.
 
+---
+
 reverend
 ========
 
